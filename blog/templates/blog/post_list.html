@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% load static%}
+{% block title %}Meu Blog{% endblock%}
+
+{% block content%}
+{% for post in post_list %}
+
+
+<div class="item mb-5">
+    <div class="media">
+	    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{%static '/assets/images/blog/blog-post-thumb-7.jpg'%}" alt="image">
+	    <div class="media-body">
+            
+		        <h3 class="title mb-1"><a href="{{post.get_absolute_url}}">{{post.title}}</a></h3>
+		        <div class="meta mb-1"><span class="date">Publicado em {{ post.created}}</span></div>
+		        <div class="intro">{{ post.body|truncatewords:222 }}</div>
+		        <a class="more-link" href="{{post.get_absolute_url}}">Ler mais &rarr;</a>
+	    </div><!--//media-body-->
+    </div><!--//media-->
+</div><!--//item-->
+
+{% endfor %}
+{% endblock%}
